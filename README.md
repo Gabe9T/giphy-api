@@ -1,4 +1,4 @@
-# (Application Name)
+# (Giphy API)
 
 #### (Brief Description of Application)
 
