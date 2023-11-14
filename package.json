@@ -1,5 +1,5 @@
 {
-  "name": "template-repo",
+  "name": "GiphyAPI",
   "version": "1.0.0",
   "description": "#### (Brief Description of Application)",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kimmykokonut/template-repo.git"
+    "url": "git+https://github.com/kimmykokonut/giphy-api"
   },
   "keywords": [],
   "author": "",
