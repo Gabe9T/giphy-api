@@ -19,6 +19,24 @@ function getSearch(keyword) {
   request.open("GET", url, true);
   request.send();
 }
+
+function getTrending() {
+  let request = new XMLHttpRequest();
+  const url = `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.API_KEY}&limit=10&offset=0&rating=g&bundle=messaging_non_clips
+  `;
+
+  request.addEventListener("loadend", function() {
+    const response = JSON.parse(this.responseText);
+    if (this.status === 200) {
+      printTrending(response);
+    } else {
+      printError(this, response);
+    }
+  });
+
+  request.open("GET", url, true);
+  request.send();
+}
 //UI
 function printError(request, apiResponse, keyword) {
   document.querySelector('#result').innerText = `There was an error accessing the search input for ${keyword}:  ${request.status} ${request.statusText}: ${apiResponse.message}`;
@@ -39,5 +57,25 @@ function handleFormSubmission(e) {
 }
 
 window.addEventListener("load", function() {
+  getTrending();
   document.querySelector('form#query').addEventListener("submit", handleFormSubmission);
+
+  // document.querySelector('').addEventListener("onLoad", getTrending);
 });
+
+function printTrending(apiResponse) {
+  const image = document.createElement("img");
+  image.setAttribute("src", apiResponse.data[0].images.original.url);
+  document.querySelector('#resultTrending').append(image);
+  const image2 = document.createElement("img");
+  image2.setAttribute("src", apiResponse.data[1].images.original.url);
+  document.querySelector('#resultTrending').append(image2);
+  const image3 = document.createElement("img");
+  image3.setAttribute("src", apiResponse.data[2].images.original.url);
+  document.querySelector('#resultTrending').append(image3);
+  const image4 = document.createElement("img");
+  image4.setAttribute("src", apiResponse.data[3].images.original.url);
+  document.querySelector('#resultTrending').append(image4);
+}
+
+
