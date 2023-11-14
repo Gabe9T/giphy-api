@@ -11,11 +11,17 @@ function getSearch(keyword) {
     const response = JSON.parse(this.responseText);
     if (this.status === 200) {
       printElements(response, keyword);
+    } else {
+      printError(this, response, keyword);
     }
   });
 
   request.open("GET", url, true);
   request.send();
+}
+//UI
+function printError(request, apiResponse, keyword) {
+  document.querySelector('#result').innerText = `There was an error accessing the search input for ${keyword}:  ${request.status} ${request.statusText}: ${apiResponse.message}`;
 }
 
 function printElements(apiResponse, keyword) {
