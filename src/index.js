@@ -3,6 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
 
+function showRandomGiph() {
+  let request = new XMLHttpRequest();
+  const url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&tag=&rating=g`;
+
+  request.addEventListener("loadend", function() {
+    const response = JSON.parse(this.responseText);
+    if (this.status === 200) {
+      printRandom(response);
+    } else {
+      printError(this, response);
+    }
+  });
+
+  request.open("GET", url, true);
+  request.send();
+}
+
 function getSearch(keyword) {
   let request = new XMLHttpRequest();
   const url = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.API_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
@@ -38,8 +55,15 @@ function getTrending() {
   request.send();
 }
 //UI
+function printRandom(apiResponse) {
+  const image = document.createElement("img");
+  image.setAttribute("src", apiResponse.data.images.original.url);
+  document.querySelector('#randomShow').append(image);
+}
+
 function printError(request, apiResponse, keyword) {
-  document.querySelector('#result').innerText = `There was an error accessing the search input for ${keyword}:  ${request.status} ${request.statusText}: ${apiResponse.message}`;
+  document.querySelector('#result').innerText = `There was an error accessing the search input for ${keyword} :  ${request.status} ${request.statusText}: ${apiResponse.message}`;
+  // issue with 3 param if other only has 2?
 }
 
 function printElements(apiResponse, keyword) {
@@ -56,13 +80,6 @@ function handleFormSubmission(e) {
   getSearch(keyword);
 }
 
-window.addEventListener("load", function() {
-  getTrending();
-  document.querySelector('form#query').addEventListener("submit", handleFormSubmission);
-
-  // document.querySelector('').addEventListener("onLoad", getTrending);
-});
-
 function printTrending(apiResponse) {
   const image = document.createElement("img");
   image.setAttribute("src", apiResponse.data[0].images.original.url);
@@ -77,5 +94,8 @@ function printTrending(apiResponse) {
   image4.setAttribute("src", apiResponse.data[3].images.original.url);
   document.querySelector('#resultTrending').append(image4);
 }
-
-
+window.addEventListener("load", function() {
+  getTrending();
+  document.querySelector('form#query').addEventListener("submit", handleFormSubmission);
+  document.querySelector('div#randomShow').addEventListener("click", showRandomGiph);
+});
