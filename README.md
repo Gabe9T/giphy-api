@@ -1,33 +1,23 @@
-# (Giphy API)
+# Giphy API
 
-#### (Brief Description of Application)
+#### Epicodus Pair Project: Create an application that allows users to search Giphy for interesting GIFs. Learning API calls.
 
-#### By (Your Name Here)
+#### By Kim Robinson & Gabe Tucker
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* Javascript
+* Bootstrap
+* CSS
+* Webpack
+* ESLint
+* Dotenv
 
 ## Description
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-## Known Bugs
-
-* _Any known issues_
-* _should go here_
-
-## License
-
+* TO DO:
 When you create your template repository, take the time to add thorough installation/setup instructions to your README. This should include information on how to run the project:
 
 Installing all packages with $ npm install.
@@ -41,3 +31,12 @@ Linting JS files in the src folder with $ npm run lint
 Running tests with Jest using $ npm run test
 
 Also, make sure you update the Technologies Used section of your README, too! There's been a host of new tech that we've used in our projects in this course section.
+to add: Does the README include instructions for setting up the project including getting an API key and adding it to a .env file?
+
+## Known Bugs
+
+* No known bugs
+
+## License
+
+MIT License. see license.md for more info.
