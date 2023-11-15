@@ -57,7 +57,9 @@ function getTrending() {
 //UI
 function printRandom(apiResponse) {
   const image = document.createElement("img");
-  image.setAttribute("src", apiResponse.data.images.original.url);
+  image.setAttribute("src", apiResponse.data.images.fixed_height.url);
+  image.setAttribute("class", "col-lg-3");
+  image.setAttribute("style", "padding: 3%");
   document.querySelector('#randomShow').append(image);
 }
 

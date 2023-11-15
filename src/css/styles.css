@@ -1,4 +1,9 @@
 body {
-  background-color: lightgray;
+  background-color: black;
+  color: white;
   text-align: center;
+}
+
+#randomShow{
+  padding: 30px;
 }
